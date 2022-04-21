@@ -1,0 +1,492 @@
+{
+  "info": {
+    "_postman_id": "2e82c1e6-305e-432a-80c4-e0f9baf69d7c",
+    "name": "BasicAutomationForRental",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "status check",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "66f8dfb1-98dc-4f74-9075-8efd43fc6991",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "const response= pm.response.json();\r",
+              "console.log(response.status);\r",
+              "pm.test(\"Status should be OK\", () => {\r",
+              "    pm.expect(response.status).to.eql(\"UP\")\r",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "34a96ca8-416f-47e3-b738-51c73b017d61",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/status"
+      },
+      "response": []
+    },
+    {
+      "name": "ToolsForRental",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "bb095a84-3f71-48c2-aa3f-bb0a55228505",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "ca4ac5ca-e684-4b8a-8b30-3e75d69ebd36",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/tools"
+      },
+      "response": []
+    },
+    {
+      "name": "category",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "f2801053-4f25-48f3-bf4f-cbe7f832cdc4",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "3f766b4f-e60f-411a-a075-5fb0d490b1bc",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/tools?category=plumbing",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "tools"
+          ],
+          "query": [
+            {
+              "key": "category",
+              "value": "plumbing"
+            },
+            {
+              "key": "results",
+              "value": "3",
+              "type": "text",
+              "disabled": true
+            },
+            {
+              "key": "available",
+              "value": "false",
+              "type": "text",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "SingleTool",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "a43c8362-b4fe-4d09-b7b1-7aa3e21e6490",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "3956781d-53fd-42a0-9978-dd75d827b592",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/tools/:toolId",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "tools",
+            ":toolId"
+          ],
+          "variable": [
+            {
+              "id": "4d85fd20-1843-4889-bcd4-8d80aabe74aa",
+              "key": "toolId",
+              "value": "4643",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "All orders",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "7bbe9817-b6b5-4749-9e89-dae147c06087",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "d153a765-e900-49d9-ae25-44a1784c461f",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{apiToken}}"
+          }
+        },
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/orders"
+      },
+      "response": []
+    },
+    {
+      "name": "SingleOrder",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "7bbe9817-b6b5-4749-9e89-dae147c06087",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "d911629f-15d7-432b-9776-bc3d651f40a7",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{apiToken}}"
+          }
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/orders/:orderId",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "orders",
+            ":orderId"
+          ],
+          "variable": [
+            {
+              "key": "orderId",
+              "value": "sBXdUNnoDbgeb6eGvSICD",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Register  Api-clients",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "53303b30-4047-40c4-a65e-ff8126aa2c42",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "0129e046-db92-4088-b2a9-819ad9728405",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{apiToken}}"
+          }
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"clientName\":\"Joojo\",\r\n    \"clientEmail\":\"simoo@phone.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{baseUrl}}/api-clients"
+      },
+      "response": []
+    },
+    {
+      "name": "Create Orders",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "849583f9-bf1c-4a9c-95f7-a3046f00ea3a",
+            "exec": [
+              "pm.test(\"Status code is 201\", function () {\r",
+              "    pm.response.to.have.status(201);\r",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "ee8e57e6-781c-4393-aa15-8aba4681660a",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{apiToken}}"
+          }
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"toolId\":\"4643\",\r\n    \"customerName\":\"Jllojo\",\r\n    \"clientEmail\":\"sim@phone.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{baseUrl}}/orders"
+      },
+      "response": []
+    },
+    {
+      "name": "Update an Order",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "ec3b9216-be0f-4015-8b13-fc90e8c2191b",
+            "exec": [
+              "pm.test(\"204 Indicates that the order has been updated successfully.\", function () {\r",
+              "    pm.response.to.have.status(204);\r",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "694c25d2-aba9-4bfc-aaf1-7c57b0592984",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{apiToken}}"
+          }
+        },
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"customerName\":\"Jojo value\"\r\n}    \r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/orders/:orderId",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "orders",
+            ":orderId"
+          ],
+          "variable": [
+            {
+              "key": "orderId",
+              "value": "fQ1S7MfrTLNbQLX3HuHRV",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete an Oredr",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "ec3b9216-be0f-4015-8b13-fc90e8c2191b",
+            "exec": [
+              "pm.test(\"204 Indicates that the order has been deleted successfully.\", function () {\r",
+              "    pm.response.to.have.status(204);\r",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "953babaa-eae6-48d2-9c2f-d48bf97163c0",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{apiToken}}"
+          }
+        },
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"customerName\":\"Jojo value\"\r\n}    \r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/orders/:orderId",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "orders",
+            ":orderId"
+          ],
+          "variable": [
+            {
+              "id": "f6c98f44-da86-4c39-b959-cab391bbcf2a",
+              "key": "orderId",
+              "value": "YNRukP1PwhivRyZg77quj",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": {
+      "token": ""
+    }
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "9673c420-7406-40d0-afb2-3425be1ad426",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "78808ddb-dbb6-4b0a-80bc-b49337f09b7a",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "id": "b5e4df65-a4f0-46e3-8c10-b41b3bcd4ecb",
+      "key": "baseUrl",
+      "value": "https://simple-tool-rental-api.glitch.me",
+      "type": "string"
+    },
+    {
+      "id": "b9488546-fd7b-43da-990d-123ce0e28621",
+      "key": "apiToken",
+      "value": "fix me",
+      "type": "string"
+    }
+  ]
+}
